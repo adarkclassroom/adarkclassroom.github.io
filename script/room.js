@@ -530,7 +530,7 @@ var Room = {
 		// Create the light button
 		new Button.Button({
 			id: 'lightButton',
-			text: _('light fire'),
+			text: _('light lamp'),
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -540,7 +540,7 @@ var Room = {
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("stoke fire"),
+			text: _("read book"),
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -586,8 +586,8 @@ var Room = {
 	onArrival: function (transition_diff) {
 		Room.setTitle();
 		if (Room.changed) {
-			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
-			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
+			Notifications.notify(Room, _("the drive for knowledge is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+			Notifications.notify(Room, _("knowledge is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
 		if ($SM.get('game.builder.level') == 3) {
@@ -597,7 +597,7 @@ var Room = {
 				stores: { 'wood': 2 }
 			});
 			Room.updateIncomeView();
-			Notifications.notify(Room, _("the stranger is standing by the fire. she says she can help. says she builds things."));
+			Notifications.notify(Room, _("the stranger is standing by the desk. says she studies things."));
 		}
 
 		Engine.moveStoresView(null, transition_diff);
@@ -614,11 +614,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('freezing') },
-		Cold: { value: 1, text: _('cold') },
-		Mild: { value: 2, text: _('mild') },
-		Warm: { value: 3, text: _('warm') },
-		Hot: { value: 4, text: _('hot') }
+		Freezing: { value: 0, text: _('gone. a curious emptiness.') },
+		Cold: { value: 1, text: _('fading') },
+		Mild: { value: 2, text: _('steady.') },
+		Warm: { value: 3, text: _('expansive.') },
+		Hot: { value: 4, text: _('vast.') }
 	},
 
 	FireEnum: {
@@ -630,11 +630,11 @@ var Room = {
 			}
 			return null;
 		},
-		Dead: { value: 0, text: _('dead') },
-		Smoldering: { value: 1, text: _('smoldering') },
-		Flickering: { value: 2, text: _('flickering') },
-		Burning: { value: 3, text: _('burning') },
-		Roaring: { value: 4, text: _('roaring') }
+		Dead: { value: 0, text: _('dead.') },
+		Smoldering: { value: 1, text: _('flickering.') },
+		Flickering: { value: 2, text: _('irresistable.') },
+		Burning: { value: 3, text: _('intense.') },
+		Roaring: { value: 4, text: _('roaring.') }
 	},
 
 	setTitle: function () {
@@ -676,7 +676,7 @@ var Room = {
 	lightFire: function () {
 		var wood = $SM.get('stores.wood');
 		if (wood < 5) {
-			Notifications.notify(Room, _("not enough wood to get the fire going"));
+			Notifications.notify(Room, _("there aren't enough papers to study."));
 			Button.clearCooldown($('#lightButton.button'));
 			return;
 		} else if (wood > 4) {
@@ -690,7 +690,7 @@ var Room = {
 	stokeFire: function () {
 		var wood = $SM.get('stores.wood');
 		if (wood === 0) {
-			Notifications.notify(Room, _("the wood has run out"));
+			Notifications.notify(Room, _("the paper has run out."));
 			Button.clearCooldown($('#stokeButton.button'));
 			return;
 		}
@@ -708,10 +708,10 @@ var Room = {
 		if (Engine.activeModule != Room) {
 			Room.changed = true;
 		}
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
+		Notifications.notify(Room, _("the drive for knowledge is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if ($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
-			Notifications.notify(Room, _("the light from the fire spills from the windows, out into the dark"));
+			Notifications.notify(Room, _("the light illuminates a room, bare and cold. empty, save a desk and a few papers stacked in the corner."));
 			Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
 		}
 		window.clearTimeout(Room._fireTimer);
@@ -729,7 +729,7 @@ var Room = {
 		var wood = $SM.get('stores.wood');
 		if ($SM.get('game.fire.value') <= Room.FireEnum.Flickering.value &&
 			$SM.get('game.builder.level') > 3 && wood > 0) {
-			Notifications.notify(Room, _("builder stokes the fire"), true);
+			Notifications.notify(Room, _("student rekindles the drive for knowledge"), true);
 			$SM.set('stores.wood', wood - 1);
 			$SM.set('game.fire', Room.FireEnum.fromInt($SM.get('game.fire.value') + 1));
 		}
@@ -760,14 +760,14 @@ var Room = {
 		$SM.set('stores.wood', 4);
 		Outside.init();
 		Notifications.notify(Room, _("the wind howls outside"));
-		Notifications.notify(Room, _("the wood is running out"));
+		Notifications.notify(Room, _("the paper is running out."));
 		Engine.event('progress', 'outside');
 	},
 
 	updateBuilderState: function () {
 		var lBuilder = $SM.get('game.builder.level');
 		if (lBuilder === 0) {
-			Notifications.notify(Room, _("a ragged stranger stumbles through the door and collapses in the corner"));
+			Notifications.notify(Room, _("a stranger stumbles in and collapses in the corner."));
 			lBuilder = $SM.setget('game.builder.level', 1);
 			Engine.setTimeout(Room.unlockForest, Room._NEED_WOOD_DELAY);
 		}
@@ -775,7 +775,7 @@ var Room = {
 			var msg = "";
 			switch (lBuilder) {
 				case 1:
-					msg = _("the stranger shivers, and mumbles quietly. her words are unintelligible.");
+					msg = _("the stranger shivers, mumbling unintelligibly under her breath.");
 					break;
 				case 2:
 					msg = _("the stranger in the corner stops shivering. her breathing calms.");
