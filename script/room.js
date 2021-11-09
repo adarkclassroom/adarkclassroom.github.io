@@ -30,7 +30,7 @@ var Room = {
 			name: _('cart'),
 			button: null,
 			maximum: 1,
-			availableMsg: _('builder says she can make a cart for carrying wood'),
+			availableMsg: _('student says a cart can carry more books from the library'),
 			buildMsg: _('the rickety cart will carry more wood from the forest'),
 			type: 'building',
 			cost: function () {
@@ -577,8 +577,8 @@ var Room = {
 		}
 		Engine.setTimeout($SM.collectIncome, 1000);
 
-		Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+		Notifications.notify(Room, _("the drive for knowledge is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
+		Notifications.notify(Room, _("knowledge is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 	},
 
 	options: {}, // Nothing for now
