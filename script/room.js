@@ -673,7 +673,7 @@ var Room = {
 		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
-			Notifications.notify(Room, _("lamplight illuminates the room, bare and cold. empty, save a desk and a few papers stacked neatly in the corner."));
+			Notifications.notify(Room, _("the lamp flickers on. \n\n light illuminates the room, bare and cold. empty, save a desk and a few papers stacked neatly in the corner."));
 			Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
 		}	
 		window.clearTimeout(Room._fireTimer);
