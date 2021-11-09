@@ -12,10 +12,10 @@ var Outside = {
 	
 	_INCOME: {
 		'gatherer': {
-			name: _('gatherer'),
+			name: _('student'),
 			delay: 10,
 			stores: {
-				'wood': 1
+				'paper': 1
 			}
 		},
 		'hunter': {
@@ -140,7 +140,7 @@ var Outside = {
 		}
 		
 		// Create the outside tab
-		this.tab = Header.addLocation(_("A Silent Forest"), "outside", Outside);
+		this.tab = Header.addLocation(_("A Silent Library"), "outside", Outside);
 		
 		// Create the Outside panel
 		this.panel = $('<div>').attr('id', "outsidePanel")
@@ -166,7 +166,7 @@ var Outside = {
 		// Create the gather button
 		new Button.Button({
 			id: 'gatherButton',
-			text: _("gather wood"),
+			text: _("gather books"),
 			click: Outside.gatherWood,
 			cooldown: Outside._GATHER_DELAY,
 			width: '80px'
@@ -185,15 +185,15 @@ var Outside = {
 			var num = Math.floor(Math.random()*(space/2) + space/2);
 			if(num === 0) num = 1;
 			if(num == 1) {
-				Notifications.notify(null, _('a stranger arrives in the night'));
+				Notifications.notify(null, _('a student wanders in, looking lost.'));
 			} else if(num < 5) {
-				Notifications.notify(null, _('a weathered family takes up in one of the huts.'));
+				Notifications.notify(null, _('a clique stumbles in, sagging with exhaustion.'));
 			} else if(num < 10) {
-				Notifications.notify(null, _('a small group arrives, all dust and bones.'));
+				Notifications.notify(null, _('a small group arrives, weary and worn.'));
 			} else if(num < 30) {
-				Notifications.notify(null, _('a convoy lurches in, equal parts worry and hope.'));
+				Notifications.notify(null, _('a class stumbles in, equal parts worry and hope.'));
 			} else {
-				Notifications.notify(null, _("the town's booming. word does get around."));
+				Notifications.notify(null, _("the library's booming. word does get around."));
 			}
 			Engine.log('population increased by ' + num);
 			$SM.add('game.population', num);
