@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('the code has updated')
+//window.alert('the code has updated')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -479,12 +479,6 @@ var Room = {
 		
 		// If this is the first time playing, the fire is dead and it's freezing. 
 		// Otherwise grab past save state temp and fire level.
-		/////EXPERIMENTAL!!
-		if (typeof $SM.get('game.temperature.value')=='undefined'){
-		Notifications.notify(Room, _("head pounding. blurry vision. awake, though unconsciousness might have been better.")
-		}
-			
-		//THIS WAS ALREADY HERE...
 		$SM.set('game.temperature', $SM.get('game.temperature.value')===undefined?this.TempEnum.Freezing:$SM.get('game.temperature'));
 		$SM.set('game.fire', $SM.get('game.fire.value')===undefined?this.FireEnum.Dead:$SM.get('game.fire'));
 		
