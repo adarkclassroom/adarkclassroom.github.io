@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('COMMIT THE CODE COMMIT THE CODE')
+window.alert('updated')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -544,7 +544,7 @@ var Room = {
 		Engine.setTimeout($SM.collectIncome, 1000);
 
 		Notifications.notify(Room, _("{0}.", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
-		Notifications.notify(Room, _("the room is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 	},
 	
 	options: {}, // Nothing for now
@@ -552,8 +552,8 @@ var Room = {
 	onArrival: function(transition_diff) {
 		Room.setTitle();
 		if(Room.changed) {
-			Notifications.notify(Room, _("{0}.", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
-			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
+			Notifications.notify(Room, _("the fire is.", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+			Notifications.notify(Room, _("{0}.", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
 		if($SM.get('game.builder.level') == 3) {
