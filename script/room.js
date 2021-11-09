@@ -563,7 +563,7 @@ var Room = {
 				stores: {'wood' : 2 }
 			});
 			Room.updateIncomeView();
-			Notifications.notify(Room, _("the stranger is standing by the fire. she says she can help. says she builds things."));
+			Notifications.notify(Room, _("the student is standing by the desk. says she studies things."));
 		}
 
 		Engine.moveStoresView(null, transition_diff);
@@ -653,7 +653,7 @@ var Room = {
 	stokeFire: function() {
 		var wood = $SM.get('stores.wood');
 		if(wood === 0) {
-			Notifications.notify(Room, _("the wood has run out"));
+			Notifications.notify(Room, _("the paper has run out"));
 			Button.clearCooldown($('#stokeButton.button'));
 			return;
 		}
@@ -673,7 +673,7 @@ var Room = {
 		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
-			Notifications.notify(Room, _("the light from the fire spills from the windows, out into the dark"));
+			Notifications.notify(Room, _("the light from the lamp illuminates a room, bare and cold"));
 			Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
 		}	
 		window.clearTimeout(Room._fireTimer);
@@ -686,7 +686,7 @@ var Room = {
 		var wood = $SM.get('stores.wood');
 		if($SM.get('game.fire.value') <= Room.FireEnum.Flickering.value &&
 			$SM.get('game.builder.level') > 3 && wood > 0) {
-			Notifications.notify(Room, _("builder stokes the fire"), true);
+			Notifications.notify(Room, _("student lays a few papers on the desk. rejunevates the flame of knowledge."), true);
 			$SM.set('stores.wood', wood - 1);
 			$SM.set('game.fire',Room.FireEnum.fromInt($SM.get('game.fire.value') + 1));
 		}
@@ -717,14 +717,14 @@ var Room = {
 		$SM.set('stores.wood', 4);
 		Outside.init();
 		Notifications.notify(Room, _("the wind howls outside"));
-		Notifications.notify(Room, _("the wood is running out"));
+		Notifications.notify(Room, _("the paper is running out"));
 		Engine.event('progress', 'outside');
 	},
 	
 	updateBuilderState: function() {
 		var lBuilder = $SM.get('game.builder.level');
 		if(lBuilder === 0) {
-			Notifications.notify(Room, _("a ragged stranger stumbles through the door and collapses in the corner"));
+			Notifications.notify(Room, _("a stranger stumbles through the door and collapses in the corner"));
 			lBuilder = $SM.setget('game.builder.level', 1);
 			Engine.setTimeout(Room.unlockForest, Room._NEED_WOOD_DELAY);
 		} 
@@ -732,7 +732,7 @@ var Room = {
 			var msg = "";
 			switch(lBuilder) {
 			case 1:
-				msg = _("the stranger shivers, and mumbles quietly. her words are unintelligible.");
+				msg = _("the stranger shivers, and mumbles unintelligibly under her breath.");
 				break;
 			case 2:
 				msg = _("the stranger in the corner stops shivering. her breathing calms.");
