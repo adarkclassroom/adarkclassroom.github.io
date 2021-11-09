@@ -517,7 +517,7 @@ var Room = {
 		$SM.set('game.fire', $SM.get('game.fire.value') === undefined ? this.FireEnum.Dead : $SM.get('game.fire'));
 
 		// Create the room tab
-		this.tab = Header.addLocation(_("A Dark Room"), "room", Room);
+		this.tab = Header.addLocation(_("A Dark Classroom"), "room", Room);
 
 		// Create the Room panel
 		this.panel = $('<div>')
