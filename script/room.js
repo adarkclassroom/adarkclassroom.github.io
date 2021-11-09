@@ -17,9 +17,9 @@ var Room = {
 			name: _('trap'),
 			button: null,
 			maximum: 10,
-			availableMsg: _('builder says she can make traps to catch any creatures might still be alive out there'),
-			buildMsg: _('more traps to catch more creatures'),
-			maxMsg: _("more traps won't help now"),
+			availableMsg: _('student says completing assignments may help recover lost memories.'),
+			buildMsg: _('more assignments to spark new memories.'),
+			maxMsg: _("more assignments won't help now."),
 			type: 'building',
 			cost: function() {
 				var n = $SM.get('game.buildings["trap"]', true);
@@ -32,8 +32,8 @@ var Room = {
 			name: _('cart'),
 			button: null,
 			maximum: 1,
-			availableMsg: _('builder says she can make a cart for carrying wood'),
-			buildMsg: _('the rickety cart will carry more wood from the forest'),
+			availableMsg: _('student says a cart can make things easier.'),
+			buildMsg: _('the small cart will help carry more books from the library.'),
 			type: 'building',
 			cost: function() {
 				return {
@@ -581,7 +581,7 @@ var Room = {
 		Freezing: { value: 0, text: _('memory is gone. a curious emptiness, a lack of knowledge') },
 		Cold: { value: 1, text: _('a dim memory flickers to life') },
 		Mild: { value: 2, text: _('words, revealing bits and pieces of the world') },
-		Warm: { value: 3, text: _('recollection, an echo of things once lost') },
+		Warm: { value: 3, text: _('recollection, an echo of things now lost') },
 		Hot: { value: 4, text: _('memories roar') }
 	},
 	
