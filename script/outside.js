@@ -559,7 +559,7 @@ var Outside = {
 		var numHuts = $SM.get('game.buildings["hut"]', true);
 		var title;
 		if(numHuts === 0) {
-			title = _("A Silent Forest");
+			title = _("A Silent Library");
 		} else if(numHuts == 1) {
 			title = _("A Lonely Hut");
 		} else if(numHuts <= 4) {
