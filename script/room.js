@@ -496,7 +496,7 @@ var Room = {
 		// Create the light button
 		new Button.Button({
 			id: 'lightButton',
-			text: _('light fire'),
+			text: _('light lamp'),
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -506,7 +506,7 @@ var Room = {
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("stoke fire"),
+			text: _("study papers"),
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -544,7 +544,7 @@ var Room = {
 		Engine.setTimeout($SM.collectIncome, 1000);
 
 		Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+		Notifications.notify(Room, _("memories are {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 	},
 	
 	options: {}, // Nothing for now
@@ -552,7 +552,7 @@ var Room = {
 	onArrival: function(transition_diff) {
 		Room.setTitle();
 		if(Room.changed) {
-			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+			Notifications.notify(Room, _("{0}.", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
@@ -578,11 +578,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('freezing') },
-		Cold: { value: 1, text: _('cold') },
-		Mild: { value: 2, text: _('mild') },
-		Warm: { value: 3, text: _('warm') },
-		Hot: { value: 4, text: _('hot') }
+		Freezing: { value: 0, text: _('memory is gone. a curious emptiness, a lack of knowledge') },
+		Cold: { value: 1, text: _('a dim memory flickers to life') },
+		Mild: { value: 2, text: _('words, revealing bits and pieces of the world') },
+		Warm: { value: 3, text: _('recollection, an echo of things once lost') },
+		Hot: { value: 4, text: _('memories roar') }
 	},
 	
 	FireEnum: {
@@ -673,7 +673,7 @@ var Room = {
 		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
-			Notifications.notify(Room, _("the light from the lamp illuminates a room, bare and cold"));
+			Notifications.notify(Room, _("the light from the lamp illuminates a room, bare and cold. empty, save a desk and a few papers stacked neatly in the corner."));
 			Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
 		}	
 		window.clearTimeout(Room._fireTimer);
