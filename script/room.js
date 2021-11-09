@@ -552,7 +552,7 @@ var Room = {
 	onArrival: function(transition_diff) {
 		Room.setTitle();
 		if(Room.changed) {
-			Notifications.notify(Room, _("the fire is.", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 			Notifications.notify(Room, _("{0}.", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
