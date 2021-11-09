@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('i need help')
+window.alert('COMMIT THE CODE COMMIT THE CODE')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
