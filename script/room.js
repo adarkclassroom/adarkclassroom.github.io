@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-//window.alert('the code has updated')
+window.alert('the code has updated')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -496,7 +496,7 @@ var Room = {
 		// Create the light button
 		new Button.Button({
 			id: 'lightButton',
-			text: _('light lamp'),
+			text: _('light fire'),
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -506,7 +506,7 @@ var Room = {
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("read papers"),
+			text: _("stoke fire"),
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -553,7 +553,7 @@ var Room = {
 		Room.setTitle();
 		if(Room.changed) {
 			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
-			Notifications.notify(Room, _("{0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
+			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
 		if($SM.get('game.builder.level') == 3) {
@@ -578,11 +578,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('a curious emptiness, a lack of knowledge.') },
-		Cold: { value: 1, text: _('a dim memory flickers to life.') },
-		Mild: { value: 2, text: _('words, revealing bits and pieces of the world.') },
-		Warm: { value: 3, text: _('recollection, an echo of things now lost.') },
-		Hot: { value: 4, text: _('knowledge, steady and unshakeable') }
+		Freezing: { value: 0, text: _('freezing') },
+		Cold: { value: 1, text: _('cold') },
+		Mild: { value: 2, text: _('mild') },
+		Warm: { value: 3, text: _('warm') },
+		Hot: { value: 4, text: _('hot') }
 	},
 	
 	FireEnum: {
