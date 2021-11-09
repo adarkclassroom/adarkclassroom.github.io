@@ -479,6 +479,12 @@ var Room = {
 		
 		// If this is the first time playing, the fire is dead and it's freezing. 
 		// Otherwise grab past save state temp and fire level.
+		/////EXPERIMENTAL!!
+		if (typeof $SM.get('game.temperature.value')=='undefined'){
+		Notifications.notify(Room, _("head pounding. blurry vision. awake, though unconsciousness might have been better.")
+		}
+			
+		//THIS WAS ALREADY HERE...
 		$SM.set('game.temperature', $SM.get('game.temperature.value')===undefined?this.TempEnum.Freezing:$SM.get('game.temperature'));
 		$SM.set('game.fire', $SM.get('game.fire.value')===undefined?this.FireEnum.Dead:$SM.get('game.fire'));
 		
@@ -496,7 +502,7 @@ var Room = {
 		// Create the light button
 		new Button.Button({
 			id: 'lightButton',
-			text: _('light fire'),
+			text: _('light lamp'),
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -506,7 +512,7 @@ var Room = {
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("stoke fire"),
+			text: _("read papers"),
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -553,7 +559,7 @@ var Room = {
 		Room.setTitle();
 		if(Room.changed) {
 			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
-			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
+			Notifications.notify(Room, _("{0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
 		if($SM.get('game.builder.level') == 3) {
@@ -578,11 +584,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('freezing') },
-		Cold: { value: 1, text: _('cold') },
-		Mild: { value: 2, text: _('mild') },
-		Warm: { value: 3, text: _('warm') },
-		Hot: { value: 4, text: _('hot') }
+		Freezing: { value: 0, text: _('a curious emptiness, a lack of knowledge.') },
+		Cold: { value: 1, text: _('a dim memory flickers to life.') },
+		Mild: { value: 2, text: _('words, revealing bits and pieces of the world.') },
+		Warm: { value: 3, text: _('recollection, an echo of things now lost.') },
+		Hot: { value: 4, text: _('knowledge, steady and unshakeable') }
 	},
 	
 	FireEnum: {
