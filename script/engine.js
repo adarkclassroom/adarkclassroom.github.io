@@ -204,7 +204,7 @@
 			Events.init();
 			Room.init();
 
-			if(typeof $SM.get('stores.wood') != 'undefined') {
+			if(typeof $SM.get('stores.paper') != 'undefined') {
 				Outside.init();
 			}
 			if($SM.get('stores.compass', true) > 0) {
