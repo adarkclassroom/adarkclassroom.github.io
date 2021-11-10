@@ -98,23 +98,23 @@ var Outside = {
 	TrapDrops: [
 		{
 			rollUnder: 0.5,
-			name: 'fur',
-			message: _('scraps of fur')
+			name: 'paper',
+			message: _('scraps of paper')
 		},
 		{
 			rollUnder: 0.75,
-			name: 'meat',
-			message: _('bits of meat')
+			name: 'assignments',
+			message: _('assignments')
 		},
 		{
 			rollUnder: 0.85,
-			name: 'scales',
-			message: _('strange scales')
+			name: 'grades',
+			message: _('grades')
 		},
 		{
 			rollUnder: 0.93,
-			name: 'teeth',
-			message: _('scattered teeth')
+			name: 'plraceholder1',
+			message: _('placeholder1')
 		},
 		{
 			rollUnder: 0.995,
@@ -540,7 +540,7 @@ var Outside = {
 			if(btn.length === 0) {
 				new Button.Button({
 					id: 'trapsButton',
-					text: _("check traps"),
+					text: _("finish work"),
 					click: Outside.checkTraps,
 					cooldown: Outside._TRAPS_DELAY,
 					width: '80px'
