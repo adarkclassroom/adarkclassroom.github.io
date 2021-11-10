@@ -14,7 +14,7 @@ var Room = {
 	
 	Craftables: {
 		'trap': {
-			name: _('trap'),
+			name: _('assignments'),
 			button: null,
 			maximum: 10,
 			availableMsg: _('student says completing assignments may help recover lost memories.'),
@@ -538,7 +538,7 @@ var Room = {
 		if($SM.get('game.builder.level') >= 0 && $SM.get('game.builder.level') < 3) {
 			Room._builderTimer = Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
 		}
-		if($SM.get('game.builder.level') == 1 && $SM.get('stores.wood', true) < 0) {
+		if($SM.get('game.builder.level') == 1 && $SM.get('stores.paper', true) < 0) {
 			Engine.setTimeout(Room.unlockForest, Room._NEED_WOOD_DELAY);
 		}
 		Engine.setTimeout($SM.collectIncome, 1000);
@@ -560,7 +560,7 @@ var Room = {
 			$SM.add('game.builder.level', 1);
 			$SM.setIncome('builder', {
 				delay: 10,
-				stores: {'wood' : 2 }
+				stores: {'paper' : 2 }
 			});
 			Room.updateIncomeView();
 			Notifications.notify(Room, _("the student is standing by the desk. says she studies things."));
@@ -626,7 +626,7 @@ var Room = {
 			}
 		}
 		
-		if(!$SM.get('stores.wood')) {
+		if(!$SM.get('stores.paper')) {
 			light.addClass('free');
 			stoke.addClass('free');
 		} else {
@@ -638,27 +638,27 @@ var Room = {
 	_fireTimer: null,
 	_tempTimer: null,
 	lightFire: function() {
-		var wood = $SM.get('stores.wood');
-		if(wood < 5) {
-			Notifications.notify(Room, _("not enough wood to get the fire going"));
+		var paper = $SM.get('stores.paper');
+		if(paper < 5) {
+			Notifications.notify(Room, _("not enough paper to light the lamp."));
 			Button.clearCooldown($('#lightButton.button'));
 			return;
-		} else if(wood > 4) {
-			$SM.set('stores.wood', wood - 5);
+		} else if(paper > 4) {
+			$SM.set('stores.paper', paper - 5);
 		}
 		$SM.set('game.fire', Room.FireEnum.Burning);
 		Room.onFireChange();
 	},
 	
 	stokeFire: function() {
-		var wood = $SM.get('stores.wood');
-		if(wood === 0) {
+		var paper = $SM.get('stores.paper');
+		if(paper === 0) {
 			Notifications.notify(Room, _("the paper has run out"));
 			Button.clearCooldown($('#stokeButton.button'));
 			return;
 		}
-		if(wood > 0) {
-			$SM.set('stores.wood', wood - 1);
+		if(paper > 0) {
+			$SM.set('stores.paper', paper - 1);
 		}
 		if($SM.get('game.fire.value') < 4) {
 			$SM.set('game.fire', Room.FireEnum.fromInt($SM.get('game.fire.value') + 1));
@@ -683,11 +683,11 @@ var Room = {
 	},
 	
 	coolFire: function() {
-		var wood = $SM.get('stores.wood');
+		var paper = $SM.get('stores.paper');
 		if($SM.get('game.fire.value') <= Room.FireEnum.Flickering.value &&
-			$SM.get('game.builder.level') > 3 && wood > 0) {
+			$SM.get('game.builder.level') > 3 && paper > 0) {
 			Notifications.notify(Room, _("student lays a few papers on the desk. rejunevates the flame of knowledge."), true);
-			$SM.set('stores.wood', wood - 1);
+			$SM.set('stores.paper', paper - 1);
 			$SM.set('game.fire',Room.FireEnum.fromInt($SM.get('game.fire.value') + 1));
 		}
 		if($SM.get('game.fire.value') > 0) {
@@ -714,7 +714,7 @@ var Room = {
 	},
 	
 	unlockForest: function() {
-		$SM.set('stores.wood', 4);
+		$SM.set('stores.paper', 4);
 		Outside.init();
 		Notifications.notify(Room, _("the wind howls outside"));
 		Notifications.notify(Room, _("the paper is running out"));
@@ -1023,7 +1023,7 @@ var Room = {
 			return true;
 		}
 		// Show buttons if we have at least 1/2 the wood, and all other components have been seen.
-		if($SM.get('stores.wood', true) < cost['wood'] * 0.5) {
+		if($SM.get('stores.paper', true) < cost['paper'] * 0.5) {
 			return false;
 		}
 		for(var c in cost) {
