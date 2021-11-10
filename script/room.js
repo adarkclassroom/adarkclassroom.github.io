@@ -500,7 +500,7 @@ var Room = {
 			click: Room.lightFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
-			cost: {'wood': 5}
+			cost: {'paper': 5}
 		}).appendTo('div#roomPanel');
 		
 		// Create the stoke button
@@ -510,7 +510,7 @@ var Room = {
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
-			cost: {'wood': 1}
+			cost: {'paper': 1}
 		}).appendTo('div#roomPanel');
 		
 		// Create the stores container
