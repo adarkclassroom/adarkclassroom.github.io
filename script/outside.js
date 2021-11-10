@@ -19,11 +19,11 @@ var Outside = {
 			}
 		},
 		'hunter': {
-			name: _('hunter'),
+			name: _('scholar'),
 			delay: 10,
 			stores: {
-				'fur': 0.5,
-				'meat': 0.5
+				'assignments': 0.5
+				//'': 0.5
 			}
 		},
 		'trapper': {
@@ -43,12 +43,12 @@ var Outside = {
 			}
 		},
 		'charcutier': {
-			name: _('charcutier'),
+			name: _('grader'),
 			delay: 10,
 			stores: {
-				'meat': -5,
-				'wood': -5,
-				'cured meat': 1
+				'paper': -5,
+				'assignments': -5,
+				'grades': 1
 			}
 		},
 		'iron miner': {
