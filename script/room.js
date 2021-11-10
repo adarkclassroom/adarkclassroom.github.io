@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('updated 12:25')
+window.alert('updated 12:38')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -13,7 +13,7 @@ var Room = {
 	buttons:{},
 	
 	Craftables: {
-		'trap': {
+		'quills': {
 			name: _('quills'),
 			button: null,
 			maximum: 10,
@@ -22,7 +22,7 @@ var Room = {
 			maxMsg: _("more pens won't help now."),
 			type: 'building',
 			cost: function() {
-				var n = $SM.get('game.buildings["trap"]', true);
+				var n = $SM.get('game.buildings["quills"]', true);
 				return {
 					'paper': 10 + (n*10)
 				};
@@ -41,7 +41,7 @@ var Room = {
 				};
 			}
 		},
-		'hut': {
+		'room': {
 			name: _('room'),
 			button: null,
 			maximum: 20,
@@ -50,7 +50,7 @@ var Room = {
 			maxMsg: _('no more room.'),
 			type: 'building',
 			cost: function() {
-				var n = $SM.get('game.buildings["hut"]', true);
+				var n = $SM.get('game.buildings["room"]', true);
 				return {
 					'paper': 100 + (n*50)
 				};
@@ -701,11 +701,11 @@ var Room = {
 		var old = $SM.get('game.temperature.value');
 		if($SM.get('game.temperature.value') > 0 && $SM.get('game.temperature.value') > $SM.get('game.fire.value')) {
 			$SM.set('game.temperature',Room.TempEnum.fromInt($SM.get('game.temperature.value') - 1));
-			Notifications.notify(Room, _("the room is {0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
+			Notifications.notify(Room, _("the room is {0}" , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
 		}
 		if($SM.get('game.temperature.value') < 4 && $SM.get('game.temperature.value') < $SM.get('game.fire.value')) {
 			$SM.set('game.temperature', Room.TempEnum.fromInt($SM.get('game.temperature.value') + 1));
-			Notifications.notify(Room, _("the room is {0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
+			Notifications.notify(Room, _("the room is {0}" , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
 		}
 		if($SM.get('game.temperature.value') != old) {
 			Room.changed = true;
