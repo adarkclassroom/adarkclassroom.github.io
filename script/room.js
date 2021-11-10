@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('updated 12:38')
+window.alert('latest commit: 12:38')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -56,18 +56,17 @@ var Room = {
 				};
 			}
 		},
-		'lodge': {
+		'study': {
 			name: _('lodge'),
 			button: null,
 			maximum: 1,
 			availableMsg: _('residents could help complete assignments, given the means.'),
-			buildMsg: _('the workroom stands in the library, quietly awaiting students.'),
+			buildMsg: _('the study stands in the library, quietly awaiting students.'),
 			type: 'building',
 			cost: function() {
 				return {
 					paper: 200,
 					assignments: 10,
-					grades: 5
 				};
 			}
 		},
