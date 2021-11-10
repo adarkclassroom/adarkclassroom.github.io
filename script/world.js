@@ -21,7 +21,7 @@ var World = {
 		BATTLEFIELD: 'F',
 		SWAMP: 'M',
 		CACHE: 'U'
-	},
+	},//all of the types of buildings that can be found in the world.
 	TILE_PROBS: {},
 	LANDMARKS: {},
 	STICKINESS: 0.5, // 0 <= x <= 1
