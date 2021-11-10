@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-window.alert('updated 12:19')
+window.alert('updated 12:25')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
@@ -670,7 +670,7 @@ var Room = {
 		if(Engine.activeModule != Room) {
 			Room.changed = true;
 		}
-		Notifications.notify(Room, _("the room is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
+		Notifications.notify(Room, _("{0}.", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
 			Notifications.notify(Room, _("the lamp flickers on. \n\n light illuminates the room, bare and cold. empty, save a desk and a few papers stacked neatly in the corner."));
@@ -701,11 +701,11 @@ var Room = {
 		var old = $SM.get('game.temperature.value');
 		if($SM.get('game.temperature.value') > 0 && $SM.get('game.temperature.value') > $SM.get('game.fire.value')) {
 			$SM.set('game.temperature',Room.TempEnum.fromInt($SM.get('game.temperature.value') - 1));
-			Notifications.notify(Room, _("{0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
+			Notifications.notify(Room, _("the room is {0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
 		}
 		if($SM.get('game.temperature.value') < 4 && $SM.get('game.temperature.value') < $SM.get('game.fire.value')) {
 			$SM.set('game.temperature', Room.TempEnum.fromInt($SM.get('game.temperature.value') + 1));
-			Notifications.notify(Room, _("{0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
+			Notifications.notify(Room, _("the room is {0}." , Room.TempEnum.fromInt($SM.get('game.temperature.value')).text), true);
 		}
 		if($SM.get('game.temperature.value') != old) {
 			Room.changed = true;
