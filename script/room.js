@@ -24,7 +24,7 @@ var Room = {
 			cost: function() {
 				var n = $SM.get('game.buildings["trap"]', true);
 				return {
-					'wood': 10 + (n*10)
+					'paper': 10 + (n*10)
 				};
 			}
 		},
@@ -37,7 +37,7 @@ var Room = {
 			type: 'building',
 			cost: function() {
 				return {
-					'wood': 30
+					'paper': 30
 				};
 			}
 		},
@@ -670,7 +670,7 @@ var Room = {
 		if(Engine.activeModule != Room) {
 			Room.changed = true;
 		}
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
+		Notifications.notify(Room, _("the room is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
 		if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
 			$SM.set('game.builder.level', 0);
 			Notifications.notify(Room, _("the lamp flickers on. \n\n light illuminates the room, bare and cold. empty, save a desk and a few papers stacked neatly in the corner."));
