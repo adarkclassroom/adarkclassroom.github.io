@@ -561,15 +561,15 @@ var Outside = {
 		if(numHuts === 0) {
 			title = _("A Silent Library");
 		} else if(numHuts == 1) {
-			title = _("A Lonely Hut");
+			title = _("A Lonely Library");
 		} else if(numHuts <= 4) {
-			title = _("A Tiny Village");
+			title = _("A Tiny Library");
 		} else if(numHuts <= 8) {
-			title = _("A Modest Village");
+			title = _("A Modest Library");
 		} else if(numHuts <= 14) {
-			title = _("A Large Village");
+			title = _("A Large Library");
 		} else {
-			title = _("A Raucous Village");
+			title = _("A Raucous Library");
 		}
 		
 		if(Engine.activeModule == this) {
