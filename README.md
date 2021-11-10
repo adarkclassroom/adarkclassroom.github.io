@@ -1,6 +1,6 @@
 A Dark Classroom
 ===========
-> "head pounding. blurry vision. awake, though unconsciousness might have been better."
+> "head pounding. vision blurry. awake, though unconsciousness might have been better."
 
 a school version of the browser game 'a dark room'. 
 
