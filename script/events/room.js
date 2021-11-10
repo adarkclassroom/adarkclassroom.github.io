@@ -260,19 +260,19 @@ Events.Room = [
 	{/* The Shady Builder */
 		title: _('The Shady Builder'),
 		isAvailable: function() {
-			return Engine.activeModule == Room && $SM.get('game.buildings["hut"]', true) >= 5 && $SM.get('game.buildings["hut"]', true) < 20;
+			return Engine.activeModule == Room && $SM.get('game.buildings["room"]', true) >= 5 && $SM.get('game.buildings["room"]', true) < 20;
 		},
 		scenes: {
 			'start':{
 				text: [
 					_('a shady builder passes through'),
-					_('says he can build you a hut for less wood')
+					_('says he can build you a room for less')
 				],
 				notification: _('a shady builder passes through'),
 				buttons: {
 					'build': {
-						text: _('300 wood'),
-						cost: { 'wood' : 300 },
+						text: _('300 paper'),
+						cost: { 'paper' : 300 },
 						nextScene: {0.6: 'steal', 1: 'build'}
 					},
 					'deny': {
@@ -295,13 +295,13 @@ Events.Room = [
 			},
 			'build': {
 				text:[
-					_("the shady builder builds a hut")
+					_("the shady builder puts up a room")
 				],
-				notification: _('the shady builder builds a hut'),
+				notification: _('the shady builder puts up a room'),
 				onLoad: function() {
-					var n = $SM.get('game.buildings["hut"]', true);
+					var n = $SM.get('game.buildings["room"]', true);
 					if(n < 20){
-						$SM.set('game.buildings["hut"]',n+1);
+						$SM.set('game.buildings["room"]',n+1);
 					}
 				},
 				buttons: {
@@ -322,15 +322,15 @@ Events.Room = [
 		scenes: {
 			start: {
 				text: [
-					_('a wanderer arrives with an empty cart. says if he leaves with wood, he\'ll be back with more.'),
-					_("builder's not sure he's to be trusted.")
+					_('a wanderer arrives with an empty briefcase. says if he leaves with paper, he\'ll be back with more.'),
+					_("student's not sure he's to be trusted.")
 				],
 				notification: _('a mysterious wanderer arrives'),
 				blink: true,
 				buttons: {
 					'wood100': {
 						text: _('give 100'),
-						cost: {wood: 100},
+						cost: {paper: 100},
 						nextScene: { 1: 'wood100'}
 					},
 					'wood500': {
@@ -346,13 +346,13 @@ Events.Room = [
 			},
 			'wood100': {
 				text: [
-					_('the wanderer leaves, cart loaded with wood')
+					_('the wanderer leaves, briefcase packed with paper')
 				],
 				action: function(inputDelay) {
 					var delay = inputDelay || false;
 					Events.saveDelay(function() {
-						$SM.add('stores.wood', 300);
-						Notifications.notify(Room, _('the mysterious wanderer returns, cart piled high with wood.'));
+						$SM.add('stores.paper', 300);
+						Notifications.notify(Room, _('the mysterious wanderer returns, briefcase loaded full of paper.'));
 					}, 'Room[4].scenes.wood100.action', delay);
 				},
 				onLoad: function() {
@@ -369,13 +369,13 @@ Events.Room = [
 			},
 			'wood500': {
 				text: [
-					_('the wanderer leaves, cart loaded with wood')
+					_('the wanderer leaves, briefcase packed with paper')
 				],
 				action: function(inputDelay) {
 					var delay = inputDelay || false;
 					Events.saveDelay(function() {
-						$SM.add('stores.wood', 1500);
-						Notifications.notify(Room, _('the mysterious wanderer returns, cart piled high with wood.'));
+						$SM.add('stores.paper', 1500);
+						Notifications.notify(Room, _('the mysterious wanderer returns, briefcase loaded full of paper.'));
 					}, 'Room[4].scenes.wood500.action', delay);
 				},
 				onLoad: function() {
