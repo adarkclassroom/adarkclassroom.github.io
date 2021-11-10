@@ -591,9 +591,9 @@ var Outside = {
 	},
 	
 	gatherWood: function() {
-		Notifications.notify(Outside, _("dry brush and dead branches litter the forest floor"));
+		Notifications.notify(Outside, _("papers and textbooks litter the floor"));
 		var gatherAmt = $SM.get('game.buildings["cart"]', true) > 0 ? 50 : 10;
-		$SM.add('stores.wood', gatherAmt);
+		$SM.add('stores.paper', gatherAmt);
 	},
 	
 	checkTraps: function() {
