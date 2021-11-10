@@ -2,10 +2,10 @@
 	//only used for poedit to find translatable strings
 	var keywords = [ 
 		_('saved.'),
-		_('wood'),
-		_('builder'),
+		_('paper'),
+		_('student'),
 		_('teeth'),
-		_('meat'),
+		_('assignment'),
 		_('fur'),
 		_('alien alloy'),
 		_('bullets'),
