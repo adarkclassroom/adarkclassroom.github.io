@@ -57,7 +57,7 @@ var Room = {
 			}
 		},
 		'study': {
-			name: _('lodge'),
+			name: _('study'),
 			button: null,
 			maximum: 1,
 			availableMsg: _('residents could help complete assignments, given the means.'),
