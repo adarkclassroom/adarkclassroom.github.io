@@ -14,12 +14,12 @@ var Room = {
 	
 	Craftables: {
 		'trap': {
-			name: _('assignments'),
+			name: _('quills'),
 			button: null,
 			maximum: 10,
-			availableMsg: _('student says completing assignments may help recover lost memories.'),
-			buildMsg: _('more assignments to spark new memories.'),
-			maxMsg: _("more assignments won't help now."),
+			availableMsg: _('student says completing assignments may help deepen understanding.'),
+			buildMsg: _('more pens to complete more assignments.'),
+			maxMsg: _("more pens won't help now."),
 			type: 'building',
 			cost: function() {
 				var n = $SM.get('game.buildings["trap"]', true);
@@ -42,17 +42,17 @@ var Room = {
 			}
 		},
 		'hut': {
-			name: _('hut'),
+			name: _('room'),
 			button: null,
 			maximum: 20,
-			availableMsg: _("builder says there are more wanderers. says they'll work, too."),
-			buildMsg: _('builder puts up a hut, out in the forest. says word will get around.'),
-			maxMsg: _('no more room for huts.'),
+			availableMsg: _("student says there are more wanderers out there. says they'll work too."),
+			buildMsg: _('student puts up a small room in the library. says word will get around.'),
+			maxMsg: _('no more room.'),
 			type: 'building',
 			cost: function() {
 				var n = $SM.get('game.buildings["hut"]', true);
 				return {
-					'wood': 100 + (n*50)
+					'paper': 100 + (n*50)
 				};
 			}
 		},
@@ -60,14 +60,14 @@ var Room = {
 			name: _('lodge'),
 			button: null,
 			maximum: 1,
-			availableMsg: _('villagers could help hunt, given the means'),
-			buildMsg: _('the hunting lodge stands in the forest, a ways out of town'),
+			availableMsg: _('residents could help complete assignments, given the means.'),
+			buildMsg: _('the workroom stands in the library, quietly awaiting students.'),
 			type: 'building',
 			cost: function() {
 				return {
-					wood: 200,
-					fur: 10,
-					meat: 5
+					paper: 200,
+					assignments: 10,
+					grades: 5
 				};
 			}
 		},
@@ -171,11 +171,11 @@ var Room = {
 			}
 		},
 		'waterskin': {
-			name: _('waterskin'),
+			name: _('cup'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _('this waterskin\'ll hold a bit of water, at least'),
+			buildMsg: _('this cup\'ll hold a bit of water, at least'),
 			cost: function() {
 				return {
 					'leather': 50
@@ -183,11 +183,11 @@ var Room = {
 			}
 		},
 		'cask': {
-			name: _('cask'),
+			name: _('water bottle'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _('the cask holds enough water for longer expeditions'),
+			buildMsg: _('the water bottle holds enough water for longer explorations'),
 			cost: function() {
 				return {
 					'leather': 100,
@@ -196,7 +196,7 @@ var Room = {
 			}
 		},
 		'water tank': {
-			name: _('water tank'),
+			name: _('hydroflask'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
@@ -209,10 +209,10 @@ var Room = {
 			}
 		},
 		'bone spear': {
-			name: _('bone spear'),
+			name: _('pencil'),
 			button: null,
 			type: 'weapon',
-			buildMsg: _("this spear's not elegant, but it's pretty good at stabbing"),
+			buildMsg: _("it isn't elegant, but it's pretty good at stabbing"),
 			cost: function() {
 				return {
 					'wood': 100,
@@ -221,7 +221,7 @@ var Room = {
 			}
 		},
 		'rucksack': {
-			name: _('rucksack'),
+			name: _('string bag'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
@@ -233,11 +233,11 @@ var Room = {
 			}
 		},
 		'wagon': {
-			name: _('wagon'),
+			name: _('binder'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _('the wagon can carry a lot of supplies'),
+			buildMsg: _('the binder can carry a lot of supplies'),
 			cost: function() {
 				return {
 					'wood': 500,
@@ -246,11 +246,11 @@ var Room = {
 			}
 		},
 		'convoy': {
-			name: _('convoy'),
+			name: _('backpack'),
 			button: null,
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _('the convoy can haul mostly everything'),
+			buildMsg: _('the backpack can haul mostly everything'),
 			cost: function() {
 				return {
 					'wood': 1000,
@@ -260,10 +260,10 @@ var Room = {
 			}
 		},
 		'l armour': {
-			name: _('l armour'),
+			name: _('t-shirt'),
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _("leather's not strong. better than rags, though."),
+			buildMsg: _("a t-shirt isn't much. better than nothing, though"),
 			cost: function() {
 				return {
 					'leather': 200,
@@ -272,10 +272,10 @@ var Room = {
 			}
 		},
 		'i armour': {
-			name: _('i armour'),
+			name: _('sweater'),
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _("iron's stronger than leather"),
+			buildMsg: _("wool's better than cloth"),
 			cost: function() {
 				return {
 					'leather': 200,
@@ -284,10 +284,10 @@ var Room = {
 			}
 		},
 		's armour': {
-			name: _('s armour'),
+			name: _('coat'),
 			type: 'upgrade',
 			maximum: 1,
-			buildMsg: _("steel's stronger than iron"),
+			buildMsg: _("a coat is stronger than wool"),
 			cost: function() {
 				return {
 					'leather': 200,
