@@ -98,9 +98,9 @@ var Outside = {
 	TrapDrops: [
 		{
 			rollUnder: 0.5,
-			name: 'paper',
-			message: _('scraps of paper')
-		},
+			name: 'assignments',
+			message: _('assignments')
+		}/*,
 		{
 			rollUnder: 0.75,
 			name: 'assignments',
@@ -125,7 +125,7 @@ var Outside = {
 			rollUnder: 1.0,
 			name: 'charm',
 			message: _('a crudely made charm')
-		}
+		}*/
 	],
 	
 	init: function(options) {
@@ -166,7 +166,7 @@ var Outside = {
 		// Create the gather button
 		new Button.Button({
 			id: 'gatherButton',
-			text: _("gather books"),
+			text: _(""),
 			click: Outside.gatherWood,
 			cooldown: Outside._GATHER_DELAY,
 			width: '80px'
@@ -434,7 +434,7 @@ var Outside = {
 		}
 		
 		for(var k in $SM.get('game.buildings')) {
-			if(k == 'trap') {
+			if(k == 'quills') {
 				var numTraps = $SM.get('game.buildings["'+k+'"]');
 				var numBait = $SM.get('stores.bait', true);
 				var traps = numTraps - numBait;
@@ -618,7 +618,7 @@ var Outside = {
 			}
 		}
 		/// TRANSLATORS : Mind the whitespace at the end.
-		var s = _('the traps contain ');
+		var s = _('finished ');
 		for(var l = 0, len = msg.length; l < len; l++) {
 			if(len > 1 && l > 0 && l < len - 1) {
 				s += ", ";
