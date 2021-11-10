@@ -544,7 +544,7 @@ var Room = {
 		Engine.setTimeout($SM.collectIncome, 1000);
 
 		Notifications.notify(Room, _("{0}.", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
-		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+		Notifications.notify(Room, _("the room is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 	},
 	
 	options: {}, // Nothing for now
@@ -552,7 +552,7 @@ var Room = {
 	onArrival: function(transition_diff) {
 		Room.setTitle();
 		if(Room.changed) {
-			Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
+			Notifications.notify(Room, _("the room is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text));
 			Notifications.notify(Room, _("{0}.", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
@@ -594,11 +594,11 @@ var Room = {
 			}
 			return null;
 		},
-		Dead: { value: 0, text: _('dead') },
-		Smoldering: { value: 1, text: _('smoldering') },
-		Flickering: { value: 2, text: _('flickering') },
-		Burning: { value: 3, text: _('burning') },
-		Roaring: { value: 4, text: _('roaring') }
+		Dead: { value: 0, text: _('dark.') },
+		Smoldering: { value: 1, text: _('dim.') },
+		Flickering: { value: 2, text: _('silent.') },
+		Burning: { value: 3, text: _('quiet.') },
+		Roaring: { value: 4, text: _('cozy.') }
 	},
 	
 	setTitle: function() {
