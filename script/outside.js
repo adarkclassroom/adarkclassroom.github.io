@@ -454,7 +454,7 @@ var Outside = {
 		var hasPeeps;
 		if($SM.get('game.buildings["hut"]', true) === 0) {
 			hasPeeps = false;
-			village.attr('data-legend', _('forest'));
+			village.attr('data-legend', _('library'));
 		} else {
 			hasPeeps = true;
 			village.attr('data-legend', _('village'));
