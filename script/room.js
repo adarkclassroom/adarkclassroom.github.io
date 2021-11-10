@@ -1,7 +1,7 @@
 /**
  * Module that registers the simple room functionality
  */
-var lastMod = document.lastModified()
+var lastMod = document.lastModified
 window.alert('updated...'+x)
 var Room = {
 	// times in (minutes * seconds * milliseconds)
