@@ -506,7 +506,7 @@ var Room = {
 		// Create the stoke button
 		new Button.Button({
 			id: 'stokeButton',
-			text: _("study papers"),
+			text: _("read papers"),
 			click: Room.stokeFire,
 			cooldown: Room._STOKE_COOLDOWN,
 			width: '80px',
@@ -578,11 +578,11 @@ var Room = {
 			}
 			return null;
 		},
-		Freezing: { value: 0, text: _('memory is gone. a curious emptiness, a lack of knowledge') },
-		Cold: { value: 1, text: _('a dim memory flickers to life') },
-		Mild: { value: 2, text: _('words, revealing bits and pieces of the world') },
-		Warm: { value: 3, text: _('recollection, an echo of things now lost') },
-		Hot: { value: 4, text: _('memories roar') }
+		Freezing: { value: 0, text: _('dark.') },
+		Cold: { value: 1, text: _('dim.') },
+		Mild: { value: 2, text: _('silent.') },
+		Warm: { value: 3, text: _('quiet.') },
+		Hot: { value: 4, text: _('cozy.') }
 	},
 	
 	FireEnum: {
@@ -594,11 +594,11 @@ var Room = {
 			}
 			return null;
 		},
-		Dead: { value: 0, text: _('dark.') },
-		Smoldering: { value: 1, text: _('dim.') },
-		Flickering: { value: 2, text: _('silent.') },
-		Burning: { value: 3, text: _('quiet.') },
-		Roaring: { value: 4, text: _('cozy.') }
+		Dead: { value: 0, text: _('memory is gone. a curious emptiness, a lack of knowledge') },
+		Smoldering: { value: 1, text: _('a dim memory flickers to life') },
+		Flickering: { value: 2, text: _('words, revealing bits and pieces of the world') },
+		Burning: { value: 3, text: _('recollection, an echo of things now lost') },
+		Roaring: { value: 4, text: _('memories roar') }
 	},
 	
 	setTitle: function() {
