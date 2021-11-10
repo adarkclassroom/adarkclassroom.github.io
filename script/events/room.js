@@ -10,10 +10,10 @@ Events.Room = [
 		scenes: {
 			'start': {
 				text: [
-					_('a nomad shuffles into view, laden with makeshift bags bound with rough twine.'),
+					_('a wanderer shuffles into view, laden with drawstring bags.'),
 					_("won't say from where he came, but it's clear that he's not staying.")
 				],
-				notification: _('a nomad arrives, looking to trade'),
+				notification: _('a wanderer arrives, looking to trade'),
 				blink: true,
 				buttons: {
 					'buyScales': {
@@ -86,7 +86,7 @@ Events.Room = [
 				}
 			},
 			'stuff': {
-				reward: { wood: 100, fur: 10 },
+				reward: { paper: 100, fur: 10 },
 				text: [
 					_('a bundle of sticks lies just beyond the threshold, wrapped in coarse furs.'),
 					_('the night is silent.')
@@ -103,7 +103,7 @@ Events.Room = [
 	{ /* Noises Inside  --  trade wood for better good */
 		title: _('Noises'),
 		isAvailable: function() {
-			return Engine.activeModule == Room && $SM.get('stores.wood');
+			return Engine.activeModule == Room && $SM.get('stores.paper');
 		},
 		scenes: {
 			start: {
@@ -126,16 +126,16 @@ Events.Room = [
 			},
 			scales: {
 				text: [
-					_('some wood is missing.'),
+					_('some paper is missing.'),
 					_('the ground is littered with small scales')
 				],
 				onLoad: function() {
-					var numWood = $SM.get('stores.wood', true);
+					var numWood = $SM.get('stores.paper', true);
 					numWood = Math.floor(numWood * 0.1);
 					if(numWood === 0) numWood = 1;
 					var numScales = Math.floor(numWood / 5);
 					if(numScales === 0) numScales = 1;
-					$SM.addM('stores', {'wood': -numWood, 'scales': numScales});
+					$SM.addM('stores', {'paper': -numWood, 'scales': numScales});
 				},
 				buttons: {
 					'leave': {
@@ -146,16 +146,16 @@ Events.Room = [
 			},
 			teeth: {
 				text: [
-					_('some wood is missing.'),
+					_('some paper is missing.'),
 					_('the ground is littered with small teeth')
 				],
 				onLoad: function() {
-					var numWood = $SM.get('stores.wood', true);
+					var numWood = $SM.get('stores.paper', true);
 					numWood = Math.floor(numWood * 0.1);
 					if(numWood === 0) numWood = 1;
 					var numTeeth = Math.floor(numWood / 5);
 					if(numTeeth === 0) numTeeth = 1;
-					$SM.addM('stores', {'wood': -numWood, 'teeth': numTeeth});
+					$SM.addM('stores', {'paper': -numWood, 'teeth': numTeeth});
 				},
 				buttons: {
 					'leave': {
