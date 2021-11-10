@@ -166,7 +166,7 @@ var Outside = {
 		// Create the gather button
 		new Button.Button({
 			id: 'gatherButton',
-			text: _(""),
+			text: _("take books"),
 			click: Outside.gatherWood,
 			cooldown: Outside._GATHER_DELAY,
 			width: '80px'
