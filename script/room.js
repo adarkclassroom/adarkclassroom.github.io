@@ -1,8 +1,8 @@
 /**
  * Module that registers the simple room functionality
  */
-var docLM = document.lastModified
-window.alert('updated...'+docLM)
+//var docLM = document.lastModified
+window.alert('updated...')
 var Room = {
 	// times in (minutes * seconds * milliseconds)
 	_FIRE_COOL_DELAY: 5 * 60 * 1000, // time after a stoke before the fire cools
