@@ -558,7 +558,7 @@ var Room = {
 		}
 		if($SM.get('game.builder.level') == 3) {
 			$SM.add('game.builder.level', 1);
-			$SM.setIncome('builder', {
+			$SM.setIncome('student', {
 				delay: 10,
 				stores: {'paper' : 2 }
 			});
